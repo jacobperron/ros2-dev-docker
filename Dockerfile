@@ -1,6 +1,7 @@
 FROM ubuntu:bionic
 
-RUN apt update -qq && \
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt update -qq && \
     apt install -y \
       curl \
       gnupg2 \
@@ -42,4 +43,3 @@ RUN apt update -qq && \
       libtinyxml2-dev && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
- 
