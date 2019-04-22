@@ -48,7 +48,10 @@ RUN mkdir -p ~/ros2_ws/src && \
     cd ~/ros2_ws && \
     wget https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos && \
     vcs import src < ros2.repos && \
+    apt update -qq && \
     rosdep init && \
     rosdep update && \
     rosdep install --from-paths src --ignore-src --rosdistro crystal -y --skip-keys "console_bridge fastcdr fastrtps libopensplice67 libopensplice69 rti-connext-dds-5.3.1 urdfdom_headers" && \
-    colcon build --symlink-install
+    colcon build --symlink-install && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
