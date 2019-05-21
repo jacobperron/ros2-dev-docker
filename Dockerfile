@@ -52,6 +52,5 @@ RUN mkdir -p ~/ros2_ws/src && \
     rosdep init && \
     rosdep update && \
     rosdep install --from-paths src --ignore-src --rosdistro crystal -y --skip-keys "console_bridge fastcdr fastrtps libopensplice67 libopensplice69 rti-connext-dds-5.3.1 urdfdom_headers" && \
-    colcon build --symlink-install && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
