@@ -19,6 +19,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
       git \
       python3-colcon-common-extensions \
       python3-lark-parser \
+      python3-lxml \
+      python3-numpy \
       python3-pip \
       python-rosdep \
       python3-vcstool \
@@ -48,11 +50,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 
 RUN mkdir -p ~/ros2_ws/src && \
     cd ~/ros2_ws && \
-    wget https://raw.githubusercontent.com/ros2/ros2/crystal/ros2.repos && \
+    wget https://raw.githubusercontent.com/ros2/ros2/dashing/ros2.repos && \
     vcs import src < ros2.repos && \
     apt update -qq && \
     rosdep init && \
     rosdep update && \
-    rosdep install --from-paths src --ignore-src --rosdistro crystal -y --skip-keys "console_bridge fastcdr fastrtps libopensplice67 libopensplice69 rti-connext-dds-5.3.1 urdfdom_headers" && \
+    rosdep install --from-paths src --ignore-src --rosdistro dashing -y --skip-keys "console_bridge fastcdr fastrtps libopensplice67 libopensplice69 rti-connext-dds-5.3.1 urdfdom_header" && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
