@@ -50,7 +50,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 
 RUN mkdir -p ~/ros2_ws/src && \
     cd ~/ros2_ws && \
-    wget https://raw.githubusercontent.com/ros2/ros2/dashing/ros2.repos && \
+    wget https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos && \
     vcs import src < ros2.repos && \
     apt update -qq && \
     rosdep init && \
