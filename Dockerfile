@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:bionic
 
 RUN apt update && apt install -y curl gnupg2 locales lsb-release && \
     locale-gen en_US en_US.UTF-8 && \
@@ -20,12 +20,13 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     python3-flake8 \
     python3-pip \
     python3-pytest-cov \
-    python3-rosdep \
+    python-rosdep \
     python3-setuptools \
     python3-vcstool \
     wget && \
   python3 -m pip install -U \
     argcomplete \
+    flake8 \
     flake8-blind-except \
     flake8-builtins \
     flake8-class-newline \
@@ -36,7 +37,10 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     flake8-quotes \
     pytest-repeat \
     pytest-rerunfailures \
-    pytest && \
+    pytest \
+    pytest-cov \
+    pytest-runner \
+    setuptools && \
   apt install --no-install-recommends -y \
     libasio-dev \
     libtinyxml2-dev \
