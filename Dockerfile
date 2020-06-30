@@ -50,11 +50,11 @@ RUN apt update && apt install -y tmux vim && \
 
 RUN mkdir -p ~/ros2_foxy/src && \
   cd ~/ros2_foxy && \
-  wget https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos && \
+  wget https://raw.githubusercontent.com/ros2/ros2/foxy/ros2.repos && \
   vcs import src < ros2.repos && \
   apt update && \
   rosdep init && \
   rosdep update && \
-  rosdep install --from-paths src --ignore-src --rosdistro foxy -y --skip-keys "console_bridge fastcdr fastrtps  rti-connext-dds-5.3.1 urdfdom_headers" && \
+  rosdep install --from-paths src --ignore-src --rosdistro foxy -y --skip-keys "console_bridge fastcdr fastrtps rti-connext-dds-5.3.1 urdfdom_headers" && \
   apt clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
