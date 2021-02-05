@@ -48,6 +48,15 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   apt clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# CMake >= 3.13
+RUN apt update && apt install -y gnupg software-properties-common && \
+  curl -s https://apt.kitware.com/keys/kitware-archive-latest.asc | gpg --dearmor - > /etc/apt/trusted.gpg.d/kitware.gpg && \
+  apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main' && \
+  apt-get update && \
+  apt-get install -y --no-install-recommends cmake-data=3.18.4-0kitware1 cmake=3.18.4-0kitware1 && \
+  apt clean && \
+  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 RUN apt update && apt install -y tmux vim && \
   apt clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
